@@ -1,7 +1,9 @@
 import { Route, Routes, Link } from 'react-router-dom';
 import './App.css';
 import Board from './components/Board';
+import BoardDetail from './components/BoardDetail';
 import Header from './components/Header';
+import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Profile from './components/Profile';
 
@@ -11,9 +13,11 @@ function App() {
       {/* 라우터 그려지는 영역 */}
       <Header />
       <Routes>
-        <Route path="/" element={<></>} />
+        <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/board" element={<Board />} />
+        <Route path="/board/:boardID" element={<BoardDetail />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
