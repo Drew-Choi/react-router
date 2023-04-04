@@ -6,10 +6,13 @@ import Header from './components/Header';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Profile from './components/Profile';
+import TestRedux from './components/TestRedux';
 
 function App() {
   return (
     <div className="App">
+      <TestRedux />
+
       {/* 라우터 그려지는 영역 */}
       <Header />
       <Routes>
