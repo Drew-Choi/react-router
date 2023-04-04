@@ -3,7 +3,7 @@ import Header from './Header';
 import { useSelector } from 'react-redux';
 
 export default function Profile() {
-  const weight = useSelector((state) => state);
+  const weight = useSelector((state) => state.weightReducer);
 
   return (
     <>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function TestRedux() {
-  const weight = useSelector((state) => state);
+  const weight = useSelector((state) => state.weightReducer);
   const dispatch = useDispatch();
 
   return (

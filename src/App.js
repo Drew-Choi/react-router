@@ -7,14 +7,17 @@ import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Profile from './components/Profile';
 import TestRedux from './components/TestRedux';
+import ListContainer from './components/ListContainer';
 
 function App() {
   return (
     <div className="App">
-      <TestRedux />
+      <ListContainer />
+
+      {/* <TestRedux /> */}
 
       {/* 라우터 그려지는 영역 */}
-      <Header />
+      {/* <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
@@ -22,7 +25,7 @@ function App() {
         <Route path="/board" element={<Board />} />
         <Route path="/board/:boardID" element={<BoardDetail />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
