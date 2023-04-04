@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/test" element={<TestRedux />} />
         <Route path="/board" element={<Board />} />
         <Route path="/board/:boardID" element={<BoardDetail />} />
         <Route path="*" element={<NotFound />} />
