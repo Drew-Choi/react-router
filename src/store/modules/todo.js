@@ -16,8 +16,40 @@ const initState = {
       done: false,
     },
   ],
+  buyList: ['닌텐도', 'PS5'],
 };
 
+const CREATE = 'todo/CREATE';
+const DONE = 'todo/DONE';
+
+export function create(payload) {
+  return {
+    type: CREATE,
+    payload,
+  };
+}
+
+export function done(id) {
+  return {
+    type: DONE,
+    id,
+  };
+}
+
 export default function todo(state = initState, action) {
-  return state;
+  switch (action.type) {
+    case CREATE:
+      return {
+        ...state,
+        todoList: state.todoList.concat({
+          id: action.payload.id,
+          text: action.payload.text,
+          done: false,
+        }),
+      };
+    case DONE:
+      return console.log('DONE 호출 됨');
+    default:
+      return state;
+  }
 }

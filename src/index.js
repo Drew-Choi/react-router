@@ -8,7 +8,9 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import combineReducers from './store';
 
-const rootReducer = createStore(combineReducers);
+const reduxDevTool =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const rootReducer = createStore(combineReducers, reduxDevTool);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
