@@ -10,6 +10,7 @@ import TestRedux from './components/TestRedux';
 import ListContainer from './components/ListContainer';
 import styled from 'styled-components';
 import Start from './components/Start';
+import GlobalStyle from './components/GlobalStyle';
 
 const Main = styled.main`
   box-sizing: border-box;
@@ -23,6 +24,7 @@ const Main = styled.main`
 function App() {
   return (
     <>
+      <GlobalStyle />
       <Main>
         <Start />
       </Main>
