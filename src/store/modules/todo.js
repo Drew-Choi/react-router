@@ -48,7 +48,19 @@ export default function todo(state = initState, action) {
         }),
       };
     case DONE:
-      return console.log('DONE 호출 됨');
+      return {
+        ...state,
+        todoList: state.todoList.map((el) => {
+          if (el.id === action.id) {
+            return {
+              ...el,
+              done: true,
+            };
+          } else {
+            return el;
+          }
+        }),
+      };
     default:
       return state;
   }
