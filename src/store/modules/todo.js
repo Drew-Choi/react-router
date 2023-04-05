@@ -7,17 +7,21 @@ const initState = {
     },
     {
       id: 1,
-      text: '척추 펴기',
+      text: '척추의 요정이 말합니다! 척추 펴기!',
       done: false,
     },
     {
       id: 2,
-      text: '프로젝트 잘 마무리하기',
+      text: '프로젝트 잘 마무리 하기',
       done: false,
     },
   ],
-  buyList: ['닌텐도', 'PS5'],
+  buyList: ['닌텐도', '자동차'],
+  todoListCount: 3,
 };
+
+let counts = initState.todoList.length;
+initState['nextID'] = counts;
 
 const CREATE = 'todo/CREATE';
 const DONE = 'todo/DONE';
@@ -46,6 +50,7 @@ export default function todo(state = initState, action) {
           text: action.payload.text,
           done: false,
         }),
+        nextID: action.payload.id + 1,
       };
     case DONE:
       return {
