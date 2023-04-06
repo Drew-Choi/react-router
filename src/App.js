@@ -9,10 +9,11 @@ import Profile from './components/Profile';
 import TestRedux from './components/TestRedux';
 import ListContainer from './components/ListContainer';
 import styled from 'styled-components';
-import Start from './components/Start';
+import Start from './pages/Start';
 import GlobalStyle from './components/GlobalStyle';
-import Mbti from './components/Mbti';
+import Mbti from './pages/Mbti';
 import { useSelector } from 'react-redux';
+import Show from './pages/Show';
 
 const Main = styled.main`
   box-sizing: border-box;
@@ -25,11 +26,14 @@ const Main = styled.main`
 
 function App() {
   const page = useSelector((state) => state.mbti.page);
+  const survey = useSelector((state) => state.mbti.survey);
 
   return (
     <>
       <GlobalStyle />
-      <Main>{page === 0 ? <Start /> : <Mbti />}</Main>
+      <Main>
+        {page === 0 ? <Start /> : page <= survey.length ? <Mbti /> : <Show />}
+      </Main>
     </>
   );
 }

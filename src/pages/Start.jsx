@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import OrangeButton from './OrangeButton';
+import OrangeButton from '../components/OrangeButton';
 import { useDispatch } from 'react-redux';
 import { next } from '../store/modules/mbti';
 

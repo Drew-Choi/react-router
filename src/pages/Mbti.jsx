@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import SkyBlue from './SkyBlue';
-import { next } from '../store/modules/mbti';
-import ProgressBar from './ProgressBar';
+import SkyBlue from '../components/SkyBlue';
+import { check, next } from '../store/modules/mbti';
+import ProgressBar from '../components/ProgressBar';
 
 export default function Mbti() {
   const survey = useSelector((state) => state.mbti.survey);
@@ -28,7 +28,13 @@ export default function Mbti() {
         {survey[page - 1].answer.map((el, index) => {
           return (
             <li key={index}>
-              <SkyBlue text={el.text} clickEvent={() => dispatch(next())} />
+              <SkyBlue
+                text={el.text}
+                clickEvent={() => {
+                  dispatch(check(el.result));
+                  dispatch(next());
+                }}
+              />
               {index === 0 && <Vs>Vs</Vs>}
             </li>
           );
