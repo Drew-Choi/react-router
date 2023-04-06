@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import PinkButton from '../components/PinkButton';
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,6 +34,21 @@ export default function Show() {
     width: 500px;
     transform: translateX(-35px);
   `;
+
+  useEffect(() => {
+    incCount();
+  }, []);
+
+  const incCount = async () => {
+    const resIncCount = await fetch('http://localhost:4000/data/incCounts', {
+      method: 'POST',
+    });
+    if (resIncCount.status === 200) {
+      console.log(await resIncCount.json());
+    } else {
+      console.log(await resIncCount.json());
+    }
+  };
 
   return (
     <>

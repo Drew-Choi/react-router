@@ -130,9 +130,11 @@ const initState = {
   },
 };
 
+//리덕스 데이터 최초 인설트
 const setData = async (req, res) => {
   try {
     const client = await mongoClient.connect();
+    //컬렉션 셀렉터
     const data = client.db('mbti').collection('data');
 
     await data.insertOne(initState);
@@ -143,4 +145,49 @@ const setData = async (req, res) => {
   }
 };
 
-module.exports = { setData };
+//리덕스에 입력할 데이터를 베이스에서 가져오는 컨트롤러
+const getData = async (req, res) => {
+  try {
+    const client = await mongoClient.connect();
+    //컬렉션 셀렉터
+    const data = client.db('mbti').collection('data');
+
+    const mbtiData = await data.find({}).toArray();
+    res.status(200).json(mbtiData);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json('테이터 출력 실패, 알 수 없는 문제 발생');
+  }
+};
+
+//방문자 수를 구하는 컨트롤러
+const getCounts = async (req, res) => {
+  try {
+    const client = await mongoClient.connect();
+    //컬렉션 셀렉터
+    const countDB = client.db('mbti').collection('counts');
+
+    const counts = await countDB.findOne({ id: 1 });
+    res.status(200).json(counts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json('테이터 출력 실패, 알 수 없는 문제 발생');
+  }
+};
+
+//방문자 수 증가
+const incCounts = async (req, res) => {
+  try {
+    const client = await mongoClient.connect();
+    //컬렉션 셀렉터
+    const countDB = client.db('mbti').collection('counts');
+    //id 1인 애를 찾아서 {$inc {counts: + 1}} 해서 숫자를 증가시켜줌
+    await countDB.updateOne({ id: 1 }, { $inc: { counts: +1 } });
+    res.status(200).json('방문자 수 업데이트 성공');
+  } catch (err) {
+    console.error(err);
+    res.status(500).json('방문자 수 업데이트 실패, 알 수 없는 문제 발생');
+  }
+};
+
+module.exports = { setData, getData, getCounts, incCounts };
