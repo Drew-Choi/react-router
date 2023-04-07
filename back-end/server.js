@@ -15,7 +15,9 @@ app.use(cors());
 
 //라우터 가져오기
 const dataRouter = require('./routes/data');
+const userRouter = require('./routes/user');
 app.use('/data', dataRouter);
+app.use('/user', userRouter);
 
 app.listen(PORT, () =>
   console.log(`데이터 통신용 서버가 ${PORT}에서 실행 중입니다.`),
